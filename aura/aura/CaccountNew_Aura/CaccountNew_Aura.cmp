@@ -1,0 +1,5 @@
+<aura:component implements="lightning:actionOverride" access="global">
+	<div>
+    	<c:caccountNew></c:caccountNew>
+    </div>
+</aura:component>
