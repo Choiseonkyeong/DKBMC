@@ -1,0 +1,47 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 05-25-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-modal-header label="My Modal Heading"></lightning-modal-header>
+    <lightning-modal-body>
+    <lightning-record-edit-form density="comfy" object-api-name='Caccount__c'
+    record-id={recordId}>
+            <lightning-layout>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input-field field-name="OwnerId" disabled></lightning-input-field>
+                    <lightning-input-field field-name="Name"></lightning-input-field>
+                    <lightning-input-field field-name="CaccountNumber__c"></lightning-input-field>
+                    <lightning-input-field field-name="Site__c"></lightning-input-field>
+                    <lightning-input-field field-name="Type__c"></lightning-input-field>
+                    <lightning-input-field field-name="Industry__c"></lightning-input-field>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input-field field-name="Rating__c"></lightning-input-field>
+                    <lightning-input-field field-name="Phone__c"></lightning-input-field>
+                    <lightning-input-field field-name="Fax__c"></lightning-input-field>
+                    <lightning-input-field field-name="Website__c"></lightning-input-field>
+                    <lightning-input-field field-name="TickerSymbol__c"></lightning-input-field>
+                    <lightning-input-field field-name="Ownership__c"></lightning-input-field>
+                    <lightning-input-field field-name="NumberOfEmployees__c"></lightning-input-field>
+                    <lightning-input-field field-name="Sic__c"></lightning-input-field>
+                    
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </lightning-record-edit-form>
+
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+
+        <lightning-button label="Save" onclick={handleSave}></lightning-button>
+
+        <lightning-button label="cancle" onclick={handleCancle}></lightning-button>
+
+    </lightning-modal-footer>
+</template>

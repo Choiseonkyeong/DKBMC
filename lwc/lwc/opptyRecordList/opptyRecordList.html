@@ -1,0 +1,73 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-15-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <!-- ===== Spinner ===== -->
+    <template if:true={isShowSpinner}>
+       <lightning-spinner alternative-text="Loading"></lightning-spinner>
+   </template>
+
+   <article class="slds-card slds-card_boundary">
+       <div class="slds-card__header">
+           <header class="slds-media slds-media_center slds-has-flexi-truncate">
+               <div class="slds-media__figure">
+                   <!-- ===== Icon ===== -->
+                   <lightning-icon
+                       class="icon"
+                       icon-name="standard:quotes"
+                       alternative-text="Opportunity"
+                       size="small"></lightning-icon>
+               </div>
+
+               <div class="slds-media__body">
+                   <!-- ===== Ttitle ===== -->
+                   <h2 class="slds-card__header-title">
+                       <span class="slds-truncate slds-m-right--xx-small">Opportunity</span>
+                       <span class="slds-shrink-none slds-m-right--xx-small">({rowCount})</span>
+                   </h2>
+               </div>
+
+               <div class="slds-media">  <!--slds-p-bottom_x-small-->
+                   <!-- ===== Button ===== -->
+                   <lightning-button-icon icon-name="utility:refresh" variant="border-filled"
+                       alternative-text="Refresh" onclick={refreshData}></lightning-button-icon>
+                   <lightning-button class="slds-m-left_xx-small" label='New'
+                       variant="border-filled" alternative-text="New" onclick={showNewModal}></lightning-button>
+               </div>
+           </header>
+       </div>
+   
+        <template if:true={hasOpportunityList}>
+            <div class="body slds-scrollable_y">               
+            <!-- ===== Data Table ===== --> 
+                <lightning-datatable
+                    key-field="Id"
+                    data={opportunityList}
+                    columns={opptyColumns}
+                    onrowaction={rowactionHandler}
+                    hide-checkbox-column
+                    show-row-number-column
+                    >
+                </lightning-datatable>
+            </div>
+       </template>
+       <!-- <template if:true={hasAccountList}>
+           <div class="body slds-scrollable_y" style="border-top: 1px solid #c9c9c9;">               
+               <lightning-datatable
+                   key-field="Id"
+                   data={accountList}
+                   columns={accColumns}
+                   onrowaction={rowactionHandler}
+                   hide-checkbox-column
+                   show-row-number-column
+                   >
+               </lightning-datatable>
+           </div>
+       </template> -->
+       
+   </article>
+</template>

@@ -1,0 +1,123 @@
+<!-- @description : @author : sunkyung.choi@dkbmc.com @group : @last modified on
+: 06-02-2023 @last modified by : sunkyung.choi@dkbmc.com -->
+<template>
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-card__header slds-grid slds-page-header slds-m-around_none">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-contact" title="Ccontact">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                            <use
+                            xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Ccontact</span>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                            <span>Ccontact</span>
+                        </a>
+                    </h2>
+                </div>
+                <div class="slds-no-flex">
+                    <button class="slds-button slds-button_neutral" onclick={newhandler}>New</button>
+                </div>
+            </header>
+        </div>
+        <div >
+            <div>
+                <lightning-datatable
+                    key-field="Id"
+                    data={caccList}
+                    columns={caccColumns}
+                    onrowaction={rowactionHandler}></lightning-datatable>
+            </div>
+        </div>
+        <footer class="slds-card__footer">
+            <a
+                class="slds-card__footer-action"
+                href={ccontactLink}>View All
+                <!-- href="https://dkbmc55-dev-ed.develop.lightning.force.com/lightning/r/Caccount__c/a012w00001CXJTqAAP/related/Ccontact__r/view">View All -->
+                <span class="slds-assistive-text">Ccontact</span>
+            </a>
+        </footer>
+        <template if:true={showSecondCode}>
+            <div class="slds-modal">
+                <div class="slds-modal__content">
+                    <h3 slot="title">
+                        <lightning-icon
+                            icon-name="standard:timesheet"
+                            alternative-text="Event"
+                            size="small"></lightning-icon>
+                        &nbsp; {PAGE_TITLE}
+                    </h3>
+                    <template for:each={itemList} for:item="item" for:index="index">
+                        <div key={item.id} class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field
+                                    field-name={Ccontact_LASTNAME}
+                                    variant="label-stacked"
+                                    required="required"
+                                    value={item.Name}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field
+                                    field-name={Ccontact_PHONE}
+                                    variant="label-stacked"
+                                    required="required"
+                                    value={item.Phone__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field
+                                    field-name={Ccontact_EMAIL}
+                                    variant="label-stacked"
+
+
+                                    value={item.Email__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field
+                                    field-name={Ccontact_TITLE}
+                                    variant="label-stacked"
+                                    required="required"
+                                    value={item.Title__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="slds-p-top_medium">
+                                    <lightning-icon
+                                        icon-name="action:new"
+                                        access-key={item.id}
+                                        id={index}
+                                        alternative-text="Add Row"
+                                        size="small"
+                                        title={ADD_ROW}
+                                        onclick={addRow}></lightning-icon>
+                                    <lightning-icon
+                                        icon-name="action:delete"
+                                        access-key={item.id}
+                                        id={index}
+                                        alternative-text="Delete Row"
+                                        size="small"
+                                        title={DELETE_ROW}
+                                        onclick={removeRow}></lightning-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <br/>
+                    <lightning-layout>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button
+                                variant="success"
+                                onclick={handleSubmit}
+                                name={SUBMIT_REQUEST}
+                                label="Submit"></lightning-button>
+                        </div>
+                    </lightning-layout>
+                </div>
+            </div>
+        </template>
+
+    </article>
+</template>

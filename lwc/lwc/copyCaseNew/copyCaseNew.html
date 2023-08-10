@@ -1,0 +1,73 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 07-20-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label=" Owner" value={ownerValue} readonly></lightning-input>
+                    <lightning-input  required type="text" label="Copy Case Name" value={nameValue} onchange={nameChange}></lightning-input>
+                    <lightning-input type="number" label="CopyCase Number" readonly placeholder=""  ></lightning-input>
+                    <lightning-record-edit-form object-api-name="CopyCase__c">
+                        <lightning-input-field  required field-name="CaccountId__c" onchange={handleAccountChange} value={caccountId}></lightning-input-field>
+                    </lightning-record-edit-form>
+                    <lightning-combobox 
+                     name="Type"
+                     label="Type"
+                     value={typeValue}
+                     options={typeOptions}
+                     onchange={typeChange}>
+                    </lightning-combobox>
+                    <lightning-combobox 
+                     name="Copy Case Reason"
+                     label="Copy Case Reason"
+                     value={reasonValue}
+                     options={reasonOptions}
+                     onchange={reasonChange}>
+                    </lightning-combobox>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-combobox 
+                    name="Status"
+                    label="Status"
+                    value={statusValue}
+                    options={statusOptions}
+                    onchange={statusChange}>
+                   </lightning-combobox>
+                   <lightning-combobox 
+                    name="Priority"
+                    label="Priority"
+                    value={priorityValue}
+                    options={priorityOptions}
+                    onchange={priorityChange}>
+                  </lightning-combobox>
+                    <lightning-input type="text" label="Ccontact Phone" value={phoneValue} onchange={phoneChange}></lightning-input>
+                    <lightning-input type="text" label="Ccontact Email" value={emailValue} onchange={emailChange}></lightning-input>
+                    <lightning-combobox 
+                    name="CopyCase Origin"
+                    label="CopyCase Origin"
+                    value={originValue}
+                    options={originOptions}
+                    onchange={originChange}>
+                  </lightning-combobox>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Subject" value={subjectValue} onchange={subjectChange}></lightning-input>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-align_absolute-center slds-p-top_medium">
+            <lightning-button label="Save" onclick={handleSave}></lightning-button>
+            <lightning-button label="cancle" onclick={handleCancle}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

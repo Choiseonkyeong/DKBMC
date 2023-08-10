@@ -1,0 +1,54 @@
+<!--
+  @description       : 
+  @author            : dawon.kim@dkbmc.com
+  @group             : 
+  @last modified on  : 02-15-2023
+  @last modified by  : dawon.kim@dkbmc.com
+-->
+<template>
+    <template if:true={isLoaded}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-page-header">
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                <!--icon here-->
+                <div class="slds-media__figure">
+                    <lightning-icon class="icon" icon-name="standard:account" alternative-text="Account" size="small"></lightning-icon>
+                </div>
+                <!--list view header title here-->
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <span class="slds-truncate slds-m-right--xx-small">Account</span>
+                        <span class="slds-shrink-none slds-m-right--xx-small">({rowCount})</span>
+                    </h2>
+                </div>
+                <!--button here-->
+                <div class="slds-media">
+                    <lightning-button-icon icon-name="utility:refresh" variant="border-filled" alternative-text="Refresh" onclick={refreshAccountList}></lightning-button-icon>
+                    <lightning-button class="slds-m-left_xx-small" label="New" variant="border-filled" alternative-text="New" onclick={showNewAccountModal}></lightning-button>
+                </div>
+            </div>
+        </div>
+        <!--data table-->
+        <!--https://www.lightningdesignsystem.com/components/data-tables/?variant=inline-edit#site-main-content-->
+        <template if:true={hasAccountList}>
+            <div class="body slds-scrollable_y">               
+                <lightning-datatable
+                    key-field="Id"
+                    data={accountList}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={handleSortAccount}
+                    hide-checkbox-column
+                    show-row-number-column
+                    >
+                </lightning-datatable>
+            </div>
+            <!--footer-->
+        </template>
+    </article>
+</template>

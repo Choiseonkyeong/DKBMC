@@ -1,0 +1,42 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 06-22-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-modal-header label="Case Status Close"></lightning-modal-header>
+    <lightning-modal-body>
+    <lightning-record-edit-form density="comfy" object-api-name='CopyCase__c'
+    record-id={recordId}>
+            <lightning-layout>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input-field field-name="OwnerId" disabled></lightning-input-field>
+                    <lightning-input-field field-name="CopyCaseNumber__c"></lightning-input-field>
+                  
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input-field field-name="CaccountId__c"></lightning-input-field>
+                    <lightning-input-field field-name="Status__c"></lightning-input-field>
+                </lightning-layout-item>
+            </lightning-layout>
+            
+            <lightning-layout>
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-input-field field-name="Description__c"></lightning-input-field>
+            </lightning-layout-item>
+        </lightning-layout>
+        </lightning-record-edit-form>
+
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+
+        <lightning-button label="Save" onclick={handleSave}></lightning-button>
+
+        <lightning-button label="cancle" onclick={handleCancle}></lightning-button>
+
+    </lightning-modal-footer>
+</template>

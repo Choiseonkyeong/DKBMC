@@ -1,0 +1,58 @@
+<!--
+  @description       : 
+  @author            : yejoo00.lee@partner.samsung.com
+  @group             : 
+  @last modified on  : 02-17-2023
+  @last modified by  : yejoo00.lee@partner.samsung.com
+-->
+<template>
+    <!-- ===== Spinner ===== --><!-- TODO: 데이터를 불러오는 중일때는 로딩을 표시해주세요 -->
+    <template if:true={isShowSpinner}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+
+    <!-- XXX: class 를 통해 list 의 style 이 적용 됩니다. (Salesforce design system - 참고 : https://www.lightningdesignsystem.com/ ) -->
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-page-header">
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <!--  ===== Icon ===== -->
+                    <lightning-icon class="icon" icon-name="standard:contact" alternative-text="Contact" size="small"></lightning-icon>
+                </div>
+
+                <div class="slds-media__body">
+                    <!-- ===== Ttitle ===== -->
+                    <h2 class="slds-card__header-title">
+                        <span class="slds-truncate slds-m-right--xx-small">Contact</span>
+                        <span class="slds-shrink-none slds-m-right--xx-small">({rowCount})</span>
+                    </h2>
+                </div>
+
+                <div class="slds-media"><!--slds-p-bottom_x-small-->
+                    <!-- ===== Button ===== --> 
+                    <lightning-button-icon  icon-name="utility:refresh" variant="border-filled" alternative-text="Refresh" onclick={refreshData}></lightning-button-icon>
+                    <lightning-button class="slds-m-left_xx-small" label='New' variant="border-filled" alternative-text="New" onclick={showNewModal}></lightning-button>
+                </div>
+            </div>
+        </div>
+        
+        <template if:true={hasContactList}>
+            <!-- Body -->
+            <div class="body slds-scrollable_y" style="border-top: 1px solid #c9c9c9;">               
+                <!-- ===== Data Table ===== --> <!-- TODO: List 를 불러와서 보여줍니다. / 참고 : https://developer.salesforce.com/docs/component-library/bundle/lightning-datatable/example -->
+                <lightning-datatable
+                    key-field="Id"
+                    data={contactList}
+                    columns={columns}
+                    onrowaction={rowactionHandler}
+                    hide-checkbox-column
+                    show-row-number-column
+                    >
+                </lightning-datatable>
+            </div>
+            <!-- Footer 
+            <div class="footer"></div> 
+            -->
+        </template>
+    </article>
+</template>

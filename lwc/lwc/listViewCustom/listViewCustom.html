@@ -1,0 +1,71 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 07-05-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <div class="wrapper">
+        <div class="slds-p-around_small">
+            <!-- 모든계정 + 버튼 구역 -->
+            <div class="slds-grid">
+                <div class="slds-media">
+                    <lightning-icon icon-name="custom:custom11" title="custom11" 
+                        class="slds-media__figure"></lightning-icon>
+                    <div class="slds-media__body">
+                        <span>Custom Case</span>
+                        <div class="slds-grid">
+                            <p class="list-title">{selectedValue}</p>
+                            <lightning-button-menu alternative-text="Show menu" variant="container" icon-size="small" onselect={handleMenuSelect}>
+                                <lightning-menu-item value="All" label="All"></lightning-menu-item> 
+                                <lightning-menu-item value="All Closed Cases" label="All Closed Cases"></lightning-menu-item>
+                                <lightning-menu-item value="All Open Cases" label="All Open Cases"></lightning-menu-item>
+                            </lightning-button-menu>
+                            <lightning-button-icon icon-name="utility:pinned"  
+                                variant="border-filled" alternative-text="pinned" 
+                                size="small" title="pinned"></lightning-button-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col_bump-left">
+                    <!-- Button group: simple buttons -->
+                    <lightning-button-group>
+                        <lightning-button label="New" onclick={handleCreateRecord}></lightning-button>
+                    </lightning-button-group>
+                </div>
+            </div>
+            
+            <!-- 텍스트 구역 + 검색과 아이콘 구역 -->
+            <div class="slds-grid">
+                <p>{dataSize} items • Sorted by CreatedDate • Filtered by All Custom Case </p>
+                <div class="slds-col_bump-left slds-grid">
+                    <lightning-input name="enter-search" type="search" variant="label-hidden" onkeydown={handleEnterKey} ></lightning-input>
+                    <lightning-button-menu alternative-text="Show menu" variant="border-filled" icon-name="utility:settings" 
+                                            class="slds-m-left_xx-small">
+                        <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemTwo" label="Menu Item Two"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemThree" label="Menu Item Three"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+                    </lightning-button-menu>
+                    
+                    <lightning-button-menu alternative-text="Show menu" variant="border-filled" icon-name="utility:add" 
+                                            class="slds-m-left_xx-small">
+                        <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemTwo" label="Menu Item Two"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemThree" label="Menu Item Three"></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+                    </lightning-button-menu>
+                    <lightning-button-icon icon-name="utility:save"      variant="border-filled" alternative-text="Save"     
+                                            class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:bookmark"  variant="border-filled" alternative-text="Bookmark" 
+                                            class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:zoomin"    variant="border-filled" alternative-text="Zoom in"  
+                                            class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:zoomout"   variant="border-filled" alternative-text="Zoom out" 
+                                            class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,91 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 06-20-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-card class="slds-card_boundary">
+        <div class="slds-modal__header slds-p-horizontal_small ">
+            <div class=" slds-grid slds-grid_align-end slds-button__icon_right">
+                <lightning-button variant="neutral" label="추가" title={ADD_ROW} onclick={addRow}></lightning-button>
+                <lightning-button variant="brand" label="삭제" title={DELETE_ROW} onclick={removeRow}></lightning-button>
+            </div>
+        </div>
+        <div class="slds-modal__content modalbody"  >
+            <template for:each={itemList} for:item="item" for:index="index">
+            <!-- <template for:each={contactList} for:item="item" for:index="index"> -->
+                <lightning-record-edit-form key={item.id}   object-api-name='Ccontact__c'>
+    
+                    <lightning-layout multiple-rows>
+                        
+                        <lightning-layout-item   size="12" large-device-size="2" padding="around-small">
+                            <lightning-input-field   field-name={Ccontact_LASTNAME} variant="label-stacked"
+                            name="lastName"
+                            data-idx={index} 
+                            required=""
+                            value={item.Name}    >
+                            </lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item   size="12" large-device-size="3" padding="around-small">
+                            <lightning-input-field   field-name={Ccontact_PHONE} variant="label-stacked"
+                            name="phone"
+                            data-idx={index}
+                            value={item.Phone__c}
+                            >
+                            </lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item   size="12" large-device-size="3" padding="around-small">
+                            <lightning-input-field   field-name={Ccontact_EMAIL} variant="label-stacked"
+                            name="email"
+                            data-idx={index}
+                            value={item.Email__c}
+                            >
+                            </lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item   size="12" large-device-size="3 " padding="around-small">
+                            <lightning-input-field   field-name={Ccontact_TITLE} variant="label-stacked"
+                            data-idx={index}
+                            value={item.Title__c}
+                                >
+                            </lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" large-device-size="1" padding="around-small">
+                            <lightning-input type="checkbox" checked={item.isChecked} onchange={handleCheckboxChange} data-index={index}></lightning-input>
+                        </lightning-layout-item>
+                        <!-- <lightning-layout-item   size="12" large-device-size="2" padding="around-small">
+                            <div class="slds-p-top_medium">
+                                <lightning-button  variant="neutral"  access-key={item.id} id={index}
+                                        label="추가"  title={ADD_ROW}
+                                        onclick={addRow}>
+                                </lightning-button>
+                            </div>
+                        </lightning-layout-item> -->
+                        <!-- <lightning-layout-item   size="12" large-device-size="2" padding="around-small">
+                            <div class="slds-p-top_medium">
+                                <lightning-button   variant="brand" access-key={item.id} id={index}
+                                label="삭제" size="small" title={DELETE_ROW}
+                                onclick={removeRow}>
+                                </lightning-button>
+                            </div>
+                        </lightning-layout-item> -->
+                    </lightning-layout>
+    
+                </lightning-record-edit-form>
+            <!-- </template> -->
+            </template>
+        </div>
+        </br>
+        <div class="slds-modal__footer">
+            <lightning-layout>
+                <div class="slds-align_absolute-center">
+                    <lightning-button label="Cancel" onclick={handleCloseModal}></lightning-button>
+                    <lightning-button variant="success" onclick={handleSubmit} name={SUBMIT_REQUEST}
+                    label="Save">
+                    </lightning-button>
+                </div>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

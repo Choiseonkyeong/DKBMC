@@ -1,0 +1,60 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 05-18-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Ccontact Owner" value={ownerValue} readonly></lightning-input>
+                    <lightning-combobox 
+                        name="progress"
+                        label="Salutation"
+                        value={saluValue}
+                        options={saluOptions}
+                        onchange={handleChange}>
+                    </lightning-combobox>
+                    <lightning-input type="text" label="First Name" value={nameValue} onchange={nameChange}></lightning-input>
+                    <lightning-input type="text" label="Last Name" value={nameValue} onchange={nameChange}></lightning-input>
+                    <lightning-record-edit-form object-api-name="Caccount__c">
+                        <lightning-input-field field-name="Caccount Name" onchange={handleCContChange} value={recordId}></lightning-input-field>
+                    </lightning-record-edit-form>
+
+                    <lightning-input type="text" label="Title" value={titleValue} onchange={titleChange}></lightning-input>
+                    <lightning-input type="text" label="Department" value={deparValue} onchange={deparChange}></lightning-input>
+                    <lightning-input type="date" label="Birthdate" value={birthDateValue} onchange={birthDateChange}></lightning-input>
+                    <lightning-record-edit-form object-api-name="Ccontact__c">
+                        <lightning-input-field field-name="Reports To" onchange={reportChange}></lightning-input-field>
+                    </lightning-record-edit-form>
+                    <lightning-combobox 
+                        name="progress"
+                        label="LeadSource"
+                        value={leadSourceyValue}
+                        options={leadSourceOptions}
+                        onchange={handleChange}>
+                    </lightning-combobox>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Phone" value={phoneValue} onchange={phoneChange} ></lightning-input>
+                    <lightning-input type="text" label="Home Phone" value={homePhoneValue} onchange={homePhoneChange}></lightning-input>
+                    <lightning-input type="text" label="Mobile" value={mobileValue} onchange={mobileChange}></lightning-input>
+                    <lightning-input type="text" label="OtherPhone" value={otherPhoneValue} onchange={otherPhoneChange}></lightning-input>
+                    <lightning-input type="text" label="Fax" value={faxValue} onchange={faxChange}></lightning-input>
+                    <lightning-input type="text" label="Email" value={emailValue} onchange={emailChange}></lightning-input>
+                    <lightning-input type="text" label="Assistant" value={assistantValue} onchange={assistantChange}></lightning-input>
+                    <lightning-input type="text" label="Asst.Phone" value={assPhoneValue} onchange={assPhoneChange}></lightning-input>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-align_absolute-center slds-p-top_medium">
+            <lightning-button label="cancle" onclick={handleCancle}></lightning-button>
+            <lightning-button label="Save" onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

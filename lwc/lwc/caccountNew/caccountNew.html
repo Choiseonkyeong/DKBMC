@@ -1,0 +1,65 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 05-15-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input type="text" label="Account Owner" value={Ownervalue} readonly></lightning-input>
+                    <lightning-input type="text" label="Account Name" value={Namevalue} onchange={nameChange}></lightning-input>
+                    <lightning-input type="text" label="Parent Account" value=""></lightning-input>
+                    <lightning-input type="text" label="Account Number" value={Numbervalue} onchange={NumberChange}></lightning-input>
+                    <lightning-input type="text" label="Account Site" value={Sitevalue} onchange={SiteChange}></lightning-input>
+                    <lightning-combobox 
+                        name="progress"
+                        label="Type"
+                        value={typeValue}
+                        options={typeOptions}
+                        onchange={typeChange}>
+                    </lightning-combobox>
+                    <lightning-combobox 
+                        name="progress"
+                        label="Industry"
+                        value={industryValue}
+                        options={industryOptions}
+                        onchange={industryChange}>
+                    </lightning-combobox>
+                    <lightning-input type="Number" label="Account Revenue" value={Revenuevalue} onchange={RevenueChange}></lightning-input>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-combobox 
+                        name="progress"
+                        label="Rating"
+                        value={ratingValue}
+                        options={ratingOptions}
+                        onchange={ratingChange}>
+                    </lightning-combobox>
+                    <lightning-input type="text" label="Phone" value={Phonevalue} onchange={PhoneChange} ></lightning-input>
+                    <lightning-input type="text" label="Fax" value={Faxvalue} onchange={FaxChange}></lightning-input>
+                    <lightning-input type="text" label="Website" value={Websitevalue} onchange={WebsiteChange}></lightning-input>
+                    <lightning-input type="text" label="TickerSymbol" value={TickerSymbolvalue} onchange={SymbolChange}></lightning-input>
+                    <lightning-combobox 
+                        name="progress"
+                        label="Ownership"
+                        value={ownerShipValue}
+                        options={ownerShipOptions}
+                        onchange={ownerChange}>
+                    </lightning-combobox>
+                    <lightning-input type="number" label="Employess" value={NumberOfEmployeesvalue} onchange={EmployessChange}></lightning-input>
+                    <lightning-input type="text" label="SIC Code" value={Sicvalue} onchange={SicChange}></lightning-input>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-align_absolute-center slds-p-top_medium">
+            <lightning-button label="cancle" onclick={handleCancle}></lightning-button>
+            <lightning-button label="Save" onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,54 @@
+<!--
+  @description       : 
+  @author            : sunkyung.choi@dkbmc.com
+  @group             : 
+  @last modified on  : 05-25-2023
+  @last modified by  : sunkyung.choi@dkbmc.com
+-->
+<template>
+    <lightning-modal-header label="My Modal Heading"></lightning-modal-header>
+    <lightning-modal-body>
+    <lightning-record-edit-form density="comfy" object-api-name='Ccontact__c'
+    record-id={recordId}>
+            <lightning-layout>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input-field field-name="OwnerId" disabled></lightning-input-field>
+                    <!-- <input type="text" id="text-input-id-47" readonlyplaceholder="" class="slds-input" value="Read Only" /> -->
+                    <lightning-input-field field-name="Salutation__c"></lightning-input-field>
+                    <lightning-input-field field-name="FirstName__c"></lightning-input-field>
+                    <lightning-input-field field-name="Name" required></lightning-input-field>
+                    <lightning-input-field field-name="CaccountId__c"></lightning-input-field>
+                    <lightning-input-field field-name="Title__c"></lightning-input-field>
+                    <lightning-input-field field-name="Department__c"></lightning-input-field>
+                    <lightning-input-field field-name="Birthdate__c"></lightning-input-field>
+                    <lightning-input-field field-name="ReportsToId__c"></lightning-input-field>
+                    <lightning-input-field field-name="Lead_Source__c"></lightning-input-field>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input-field field-name="Rating__c"></lightning-input-field>
+                    <lightning-input-field field-name="Phone__c"></lightning-input-field>
+                    <lightning-input-field field-name="HomePhone__c"></lightning-input-field>
+                    <lightning-input-field field-name="Mobile__c"></lightning-input-field>
+                    <lightning-input-field field-name="TickerSymbol__c"></lightning-input-field>
+                    <lightning-input-field field-name="Ownership__c"></lightning-input-field>
+                    <lightning-input-field field-name="NumberOfEmployees__c"></lightning-input-field>
+                    <lightning-input-field field-name="Sic__c"></lightning-input-field>
+                    
+                </lightning-layout-item>
+            </lightning-layout>
+
+            
+
+        </lightning-record-edit-form>
+
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+
+        <lightning-button label="Save" onclick={handleSave}></lightning-button>
+
+        <lightning-button label="cancle" onclick={handleCancle}></lightning-button>
+
+    </lightning-modal-footer>
+</template>

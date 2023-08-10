@@ -1,0 +1,9 @@
+.navClass{
+    background-color: black;
+    color: white;
+}
+.heading{
+    font: size 2rem;
+    padding: 10px;
+    margin-left: 10px;
+}
